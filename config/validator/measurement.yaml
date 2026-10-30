@@ -1,0 +1,33 @@
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotBlank:
+                  groups: ['app_measurement_new', 'app_measurement_edit']
+            - GreaterThanOrEqual:
+                  value: today
+                  message: 'Date cannot be earlier than today.'
+                  groups: ['app_measurement_new']
+        temperature:
+            - Range:
+                  min: -80
+                  max: 80
+                  notInRangeMessage: 'Temperature must be between -80 and 80.'
+                  groups: ['app_measurement_new', 'app_measurement_edit']
+        humidity:
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Humidity must be between 0 and 100.'
+                  groups: ['app_measurement_new', 'app_measurement_edit']
+        wind:
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Wind must be between 0 and 100 km/h.'
+                  groups: ['app_measurement_new', 'app_measurement_edit']
+        rain_probability:
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Rain probability must be between 0 and 100.'
+                  groups: ['app_measurement_new', 'app_measurement_edit']
